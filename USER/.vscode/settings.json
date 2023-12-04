@@ -2,6 +2,7 @@
     "files.associations": {
         "parameter.h": "c",
         "ethercatmain.h": "c",
-        "canopen.h": "c"
+        "canopen.h": "c",
+        "dragteach.h": "c"
     }
 }
