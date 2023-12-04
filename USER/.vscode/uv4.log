@@ -1,0 +1,15 @@
+*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Build target 'JHRobotControl_407VE'
+compiling main.c...
+..\MOTION_CONTROL\DragTeach.h(22): warning:  #1295-D: Deprecated declaration TorqueProcess - give arg types
+  void TorqueProcess();
+..\MOTION_CONTROL\DragTeach.h(23): warning:  #1295-D: Deprecated declaration TorqueProcess_T - give arg types
+  void TorqueProcess_T();
+..\MOTION_CONTROL\DragTeach.h(30): warning:  #1-D: last line of file ends without a newline
+  #endif
+main.c: 3 warnings, 0 errors
+linking...
+Program Size: Code=142012 RO-data=1124 RW-data=1512 ZI-data=85640  
+FromELF: creating hex file...
+"..\OBJ\JHRobotControl_407VE.axf" - 0 Error(s), 3 Warning(s).
+Build Time Elapsed:  00:00:05

@@ -1,0 +1,64 @@
+/**
+  ******************************************************************************
+  * @file    EtherCAT_App.h
+  * @author  
+  * @version V1.1.0
+  * @date    
+  * @brief   
+  */
+
+#ifndef __ETHERCAT_APP_H
+#define __ETHERCAT_APP_H
+
+#include "stm32f4xx.h"
+#include "CANopen.h"
+
+/*从节点个数及其NodeID定义*/
+//#define SERVO_NODE_NUM 			12													//从节点个数
+//#define SERVO_NODE_ID_NUM 	(SERVO_NODE_NUM + 1)			//NodeID个数，包括1个广播ID和其他从节点
+//#define SERVO_NODE_ID_00 		0													//NodeID必须从0开始编号，且连续，0为广播ID
+//#define SERVO_NODE_ID_01_X 	1													//X轴NodeID
+//#define SERVO_NODE_ID_02_Z	2													//Z轴NodeID
+//#define SERVO_NODE_ID_03_L	3													//L轴NodeID
+//#define SERVO_NODE_ID_04_O	4													//O轴NodeID
+//#define SERVO_NODE_ID_05_U 	5													//U轴NodeID
+//#define SERVO_NODE_ID_06_V 	6													//V轴NodeID
+//#define SERVO_NODE_ID_07_X 	7													//X2轴NodeID
+//#define SERVO_NODE_ID_08_Z	8													//Z2轴NodeID
+//#define SERVO_NODE_ID_09_L	9													//L2轴NodeID
+//#define SERVO_NODE_ID_10_O	10												//O2轴NodeID
+//#define SERVO_NODE_ID_11_U 	11												//U2轴NodeID
+//#define SERVO_NODE_ID_12_V 	12												//V2轴NodeID
+
+typedef __packed struct
+{
+	u16 ControlWord;				//控制字
+	s32 TargetPos;					//目标位置
+	s32 RunVelocity;				//轮廓速度
+	s32 TarVelocity;				//目标速度
+	s32 originOffset;				//远点偏置
+	u32 interpPos;					//插补位移
+	u8 originMode;					//回原模式
+	u8 TargetMode;					//控制模式
+	//uint8 relese;					//16位对其
+}PDO_Output;							//位置模式下的TPDO数据格式
+
+typedef __packed struct 
+{
+	u16 StatusWord;					//状态字
+	s32 CurrentPosition;		//用户位置反馈
+	s32 CurrentVelocity;		//用户实际速度反馈
+	u8 CurrentMode;					//控制模式显示
+	u8 relese;							//16位对齐
+}PDO_Input;								//位置模式下的RPDO数据格式
+
+extern PDO_Output PDO_TargetInf[SERVO_NODE_NUM];							//存放TPDO模式的TPDO数据
+
+extern void TIM3_Config(void);
+extern void simpletest(char *ifname);
+
+
+#endif /* __EtherCAT_App_H */
+
+
+/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
